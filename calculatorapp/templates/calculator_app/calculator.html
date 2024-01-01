@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Simple Calculator</title>
+</head>
+<body>
+    <h2>Simple Calculator</h2>
+    <form method="post" action="{% url 'calculator' %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Calculate">
+    </form>
+
+    {% if result %}
+        <h3>Result: {{ result }}</h3>
+    {% endif %}
+
+    <h3>Recent Operations:</h3>
+    <ul>
+        {% for operation in operations %}
+            <li>{{ operation }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
